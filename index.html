@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="pre_react.js"></script>
+  </head>
+  <body>
+    <h1 style="background-color: darkblue; color: aliceblue">
+      Project 1 : Changing BackgroundColor
+    </h1>
+
+    <button
+      style="
+        background-color: green;
+        color: white;
+        border: 1px solid white;
+        border-radius: 5px;
+      "
+      id="start"
+    >
+      start
+    </button>
+    <button
+      style="
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid white;
+      "
+      id="stop"
+    >
+      stop
+    </button>
+    <script>
+      let randomColor = () => {
+        let hex = "0123456789ABCDEF";
+        let color = "#";
+        for (i = 0; i < 6; i++) {
+          color += hex[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      };
+      let interval;
+
+      let start = () => {
+        document.getElementById("start").addEventListener("click", function () {
+          interval = setInterval(() => {
+            document.body.style.backgroundColor = randomColor();
+          }, 1000);
+        });
+      };
+      start();
+      document.getElementById("stop").addEventListener("click", () => {
+        clearInterval(interval);
+        console.log("clicked");
+      });
+    </script>
+  </body>
+</html>
